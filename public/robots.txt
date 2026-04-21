@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+
+Sitemap: https://crickit-arena.com/sitemap.xml
+
+# Crawl delay to be respectful
+Crawl-delay: 1
+Request-rate: 30/60

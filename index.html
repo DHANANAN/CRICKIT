@@ -3,27 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚽ Crickit Kit Arena - Cricket Equipment Showcase</title>
+    <meta name="description" content="🏏 Crickit Arena - Premium Cricket Equipment Showcase. Explore professional-grade cricket kits, protective gear, and accessories. Compare, buy, and find everything for your cricket journey.">
+    <meta name="keywords" content="cricket, cricket equipment, bats, pads, gloves, protective gear, cricket shop">
+    <meta property="og:title" content="🏏 Crickit Kit Arena - Cricket Equipment Showcase">
+    <meta property="og:type" content="website">
+    <title>🏏 Crickit Kit Arena - Cricket Equipment & Gear Guide</title>
     <style>
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 102, 204, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(0, 102, 204, 0.6); }
+        }
+
+        @keyframes cricket-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
         :root {
-            --bg: #ffffff;
+            --bg: #f5f9ff;
             --text: #1a1a1a;
-            --border: #e0e0e0;
-            --card-bg: #f8f8f8;
-            --accent: #0066cc;
-            --accent-hover: #0052a3;
-            --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 8px 24px rgba(0, 102, 204, 0.15);
+            --border: #d4e4f7;
+            --card-bg: #ffffff;
+            --accent: #0055cc;
+            --accent-hover: #003d99;
+            --cricket-green: #1b5e20;
+            --cricket-red: #c41c3b;
+            --shadow: 0 2px 12px rgba(0, 85, 204, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 85, 204, 0.15);
         }
 
         [data-theme="dark"] {
-            --bg: #0d0d0d;
+            --bg: #0a0e27;
             --text: #f5f5f5;
-            --border: #333;
-            --card-bg: #1a1a1a;
+            --border: #1a2a4a;
+            --card-bg: #0f1a33;
             --accent: #4da6ff;
             --accent-hover: #3d8ee8;
-            --shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            --shadow: 0 2px 12px rgba(77, 166, 255, 0.1);
             --shadow-hover: 0 8px 24px rgba(77, 166, 255, 0.2);
         }
 
@@ -39,6 +60,7 @@
             color: var(--text);
             transition: background 300ms, color 300ms;
             line-height: 1.6;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="%230055cc" stroke-width="2" style="animation: spin 2s linear infinite"/><path d="M12 2 L12 6 M12 18 L12 22 M2 12 L6 12 M18 12 L22 12" stroke="%230055cc" stroke-width="2"/></svg>') 12 12, auto;
         }
 
         .container {
@@ -83,6 +105,8 @@
             justify-content: center;
             color: white;
             font-size: 24px;
+            animation: spin-slow 3s linear infinite;
+            box-shadow: 0 0 15px rgba(0, 85, 204, 0.3);
         }
 
         .theme-toggle {
@@ -181,13 +205,30 @@
 
         .kit-image {
             width: 100%;
-            height: 160px;
-            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 212, 255, 0.1));
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 85, 204, 0.08), rgba(0, 212, 255, 0.08));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 60px;
             border-bottom: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .kit-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .kit-card:hover .kit-image img {
+            transform: scale(1.08);
+        }
+
+        .kit-image.emoji {
+            animation: cricket-bounce 2s ease-in-out infinite;
         }
 
         .kit-content {
@@ -377,14 +418,27 @@
 
         .modal-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 212, 255, 0.1));
+            height: 280px;
+            background: linear-gradient(135deg, rgba(0, 85, 204, 0.08), rgba(0, 212, 255, 0.08));
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 80px;
             margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .modal-image.emoji {
+            animation: cricket-bounce 2s ease-in-out infinite;
         }
 
         .modal-title {
@@ -520,7 +574,7 @@
 
     <main class="container">
         <div class="controls">
-            <input type="search" id="search" placeholder="Search cricket kits by name, brand...">
+            <input type="search" id="search" placeholder="Search cricket equipment by name, brand...">
             <div class="brand-filters" id="brands"></div>
         </div>
 
@@ -533,7 +587,7 @@
     </main>
 
     <footer>
-        <p>🏏 Crickit Kit Arena - Fan-made cricket equipment showcase. Prices & links are for reference only. © 2026</p>
+        <p>🏏 Crickit Kit Arena - Premium Cricket Equipment Showcase. Discover professional-grade cricket gear, exclusive brands, and equipment guides. Compare, learn, and gear up for greatness. © 2026 All Rights Reserved.</p>
     </footer>
 
     <div class="modal" id="modal">
@@ -559,16 +613,19 @@
 
     <script>
         const KITS = [
-            { id: 1, brand: "SG", name: "Aeroknox Pro Strike", price: 3499, level: "Starter", material: "Kashmir Willow", weight: "2.09 kg", icon: "🏏", highlights: ["Balanced pickup", "Wide sweet spot", "Tour grip", "Player-friendly"], buyUrl: "https://www.google.com/search?q=SG+Aeroknox+Pro+Strike", productUrl: "https://www.google.com/search?q=SG+cricket" },
-            { id: 2, brand: "Kookaburra", name: "Kahuna Elite Flux", price: 17499, level: "Elite", material: "English Willow", weight: "2.09 kg", icon: "🏏", highlights: ["High spine", "Impact foam", "Premium finish", "Tour-ready"], buyUrl: "https://www.google.com/search?q=Kookaburra+Kahuna", productUrl: "https://www.google.com/search?q=Kookaburra+cricket" },
-            { id: 3, brand: "SS", name: "Tonner Signature Reserve", price: 129999, level: "Pro", material: "Grade 1 English Willow", weight: "2.06 kg", icon: "🏏", highlights: ["Light pickup", "Traditional profile", "Pro padding", "Collector grade"], buyUrl: "https://www.google.com/search?q=SS+Tonner+cricket", productUrl: "https://www.google.com/search?q=SS+cricket+bat" },
-            { id: 4, brand: "MRF", name: "Vault Match Day Rush", price: 2499, level: "Entry", material: "Poplar Blend", weight: "2.18 kg", icon: "🏏", highlights: ["Budget friendly", "Comfort grip", "Balanced face", "Weekend-ready"], buyUrl: "https://www.google.com/search?q=MRF+Vault+cricket", productUrl: "https://www.google.com/search?q=MRF+cricket" },
-            { id: 5, brand: "Gray-Nicolls", name: "Ventus Signature Crown", price: 89999, level: "Pro", material: "Premium English Willow", weight: "2.07 kg", icon: "🏏", highlights: ["Explosive pickup", "Crisp edges", "Tour feel", "Luxury grade"], buyUrl: "https://www.google.com/search?q=Gray+Nicolls+cricket", productUrl: "https://www.google.com/search?q=Gray+Nicolls+bat" },
-            { id: 6, brand: "TON", name: "Roya Limited Heritage", price: 320000, level: "Collector", material: "Hand Selected English Willow", weight: "2.05 kg", icon: "🏏", highlights: ["Large sweet spot", "Fast swing", "Leather toe guard", "Museum-piece"], buyUrl: "https://www.google.com/search?q=TON+Roya+cricket", productUrl: "https://www.google.com/search?q=TON+cricket+bat" },
-            { id: 7, brand: "DSC", name: "Intense Training Edge", price: 6999, level: "Starter", material: "Hardwood Composite", weight: "2.18 kg", icon: "🏏", highlights: ["Practice ready", "Forgiving profile", "All weather", "Training focused"], buyUrl: "https://www.google.com/search?q=DSC+cricket+bat", productUrl: "https://www.google.com/search?q=DSC+cricket" },
-            { id: 8, brand: "New Balance", name: "Chase Pro Gear Apex", price: 24999, level: "Elite", material: "Grade 1 English Willow", weight: "2.06 kg", icon: "🏏", highlights: ["Sharp pickup", "Modern cut", "Pro-ready", "Performance tuned"], buyUrl: "https://www.google.com/search?q=New+Balance+cricket+bat", productUrl: "https://www.google.com/search?q=New+Balance+cricket" },
-            { id: 9, brand: "Adidas", name: "Velocity Prime Kit", price: 5799, level: "Club", material: "Hybrid Willow", weight: "2.12 kg", icon: "🏏", highlights: ["Quick pickup", "Street-sport look", "Modern balance", "Club friendly"], buyUrl: "https://www.google.com/search?q=Adidas+cricket+bat", productUrl: "https://www.google.com/search?q=Adidas+cricket" },
-            { id: 10, brand: "Puma", name: "Supreme Match Vault", price: 149999, level: "Pro", material: "Reserve English Willow", weight: "2.04 kg", icon: "🏏", highlights: ["Reserve grade", "Elite finish", "Match-day power", "Luxury packaging"], buyUrl: "https://www.google.com/search?q=Puma+cricket+bat", productUrl: "https://www.google.com/search?q=Puma+cricket" }
+            { id: 1, brand: "Gray-Nicolls", name: "Ventus 1.3 Cricket Set with Bat", category: "Batting", price: 5499, level: "Professional", material: "English Willow Grade 1", highlights: ["Power Hitting", "Wide Sweet Spot", "Tournament Ready", "Leather Toe Guard"], image: "https://i.ibb.co/RTjpZyHy/uq94-Im-Ji.jpg", buyUrl: "https://cricketshop.eu/products/gray-nicolls-ventus-1-3-cricket-set-with-bat" },
+            { id: 2, brand: "Amazon", name: "Amazon Cricket Batting Gloves Premium", category: "Protective Gear", price: 1899, level: "Intermediate", material: "Premium Leather", highlights: ["Superior Grip", "Padded Protection", "Breathable Design", "Pro Comfort"], image: "https://i.ibb.co/ks6B0YsX/CVV1jsu-Y.jpg", buyUrl: "https://amzn.in/d/07nWH4Z8" },
+            { id: 3, brand: "Amazon", name: "Amazon Cricket Safety Helmet Professional", category: "Safety", price: 2999, level: "Professional", material: "ABS Shell", highlights: ["Impact Resistant", "Ventilation Vents", "Snug Fit", "Tournament Approved"], image: "https://i.ibb.co/vvgY7WBs/Dx5zt-NEq.jpg", buyUrl: "https://amzn.in/d/00q0d94l" },
+            { id: 4, brand: "Kookaburra", name: "Kahuna 4.1 Complete Cricket Set with Bat", category: "Protective Gear", price: 2499, level: "Advanced", material: "Multi-Layer Steel", highlights: ["Quick Movement", "Light Weight", "Enhanced Padding", "Mobility Focused"], image: "https://i.ibb.co/jdyZftp/h-RYu-Ul7-A.jpg", buyUrl: "https://www.cricketshopitaly.com/products/kookaburra-kahuna-4-1-complete-cricket-set-with-bat" },
+            { id: 5, brand: "SportsCrick", name: "English Willow Premium Cricket Kit", category: "Accessories", price: 599, level: "All Levels", material: "Genuine Leather", highlights: ["Perfect Weight", "Red Ball", "Swing Friendly", "Tournament Standard"], image: "https://i.ibb.co/HpdVbTN7/t-Q4-Pewse.jpg", buyUrl: "https://sportscrick.com/product/english-willow-cricket-kit/" },
+            { id: 6, brand: "Gray-Nicolls", name: "GN83 Scoop Edition English Willow Full Cricket Kit", category: "Batting", price: 7499, level: "Elite", material: "Premium English Willow", highlights: ["Traditional Design", "Excellent Balance", "Maximum Reach", "Pro Grade"], image: "https://i.ibb.co/Z65shJ9Z/Al-Ao-TTZL.jpg", buyUrl: "https://cricketershop.com/products/gray-nicolls-gn83-scoop-edition-english-willow-full-cricket-kit-size-sh-1" },
+            { id: 7, brand: "ArrowMax", name: "Cricket Kit Bag with Gloves & Guard Set", category: "Protective Gear", price: 1299, level: "Starter", material: "Foam Padding", highlights: ["Lightweight", "Comfortable Fit", "Budget Friendly", "Essential Protection"], image: "https://i.ibb.co/rG9ymsQ1/Cc-SA4r-R5.jpg", buyUrl: "https://dl.flipkart.com/dl/arrowmax-cricket-kit-bag-batting-gloves-elbow-guard-thigh-guard-abdominal-3-4-small-size/p/itm23442345bce1a" },
+            { id: 8, brand: "ArrowMax", name: "ArrowMax Pro Tournament Cricket Kit Bag", category: "Accessories", price: 3299, level: "Professional", material: "Waterproof Nylon", highlights: ["Spacious Design", "Multiple Pockets", "Durable Material", "Team Logo Ready"], image: "https://i.ibb.co/Y7LRTbw5/b-TIkn-EDV.jpg", buyUrl: "https://dl.flipkart.com/dl/arrowmax-cricket-kit-bag-batting-gloves-elbow-guard-thigh-guard-abdominal-3-4-small-size/p/itm23442345bce1a" },
+            { id: 9, brand: "Amazon", name: "Amazon Cricket Shoes Professional Edition", category: "Footwear", price: 3799, level: "Intermediate", material: "Mesh & Rubber", highlights: ["Perfect Grip", "Ankle Support", "Lightweight", "All-Weather"], image: "https://i.ibb.co/PZhrsTzg/z-IHiq6b3.jpg", buyUrl: "https://amzn.in/d/0awIleGj" },
+            { id: 10, brand: "Puma", name: "Puma Junior Cricket Set Complete", category: "Protective Gear", price: 999, level: "All Levels", material: "Hard Plastic Shell", highlights: ["Arm Protection", "Easy Adjustment", "Lightweight Design", "Long Lasting"], image: "https://i.ibb.co/rG9ymsQ1/Cc-SA4r-R5.jpg", buyUrl: "https://scssports.in/products/puma-junior-cricket-set" },
+            { id: 11, brand: "Gray-Nicolls", name: "GN83 Scoop Edition Cricket Kit Premium", category: "Apparel", price: 2199, level: "Professional", material: "100% Cotton", highlights: ["Breathable Fabric", "Pro Fit", "Easy Care", "Tournament Approved"], image: "https://i.ibb.co/XfjDyFQ2/l-Gklgr-Zb.jpg", buyUrl: "https://www.mirusports.com/gray-nicolls/cricket/gray-nicolls-gn83-scoop-edition-cricket-kit-sh-bat-kit-bag-leg-guard-batting-g/0a463838" },
+            { id: 12, brand: "IndiaMART", name: "Outdoor Sports Cricket Kit Professional", category: "Bundle", price: 12999, level: "Starter Package", material: "Mixed Materials", highlights: ["Complete Setup", "Best Value", "All Essentials", "Beginner Friendly"], image: "https://i.ibb.co/Xxfs2jpw/p24-Gj-Jpl.jpg", buyUrl: "https://www.indiamart.com/proddetail/outdoor-sports-cricket-kit-23811360033.html" },
+            { id: 13, brand: "SportsCrick", name: "English Willow Pro Cricket Kit Bundle", category: "Bundle", price: 15999, level: "Premium", material: "Professional Grade", highlights: ["Elite Equipment", "Ready to Play", "Tournament Standard", "Best Performance"], image: "https://i.ibb.co/mFRLLL4H/Qmy7e-Da-R.jpg", buyUrl: "https://sportscrick.com/product/english-willow-cricket-kit/" }
         ];
 
         let theme = localStorage.getItem("theme") || "light";
@@ -577,6 +634,7 @@
         let brandFilter = "All";
 
         const brands = ["All", ...new Set(KITS.map(k => k.brand))];
+        const categories = ["All", ...new Set(KITS.map(k => k.category))];
 
         function init() {
             document.body.setAttribute("data-theme", theme);
@@ -628,22 +686,24 @@
         function renderGrid() {
             const filtered = KITS.filter(kit => {
                 const brandMatch = brandFilter === "All" || kit.brand === brandFilter;
-                const searchMatch = !search || kit.name.toLowerCase().includes(search) || kit.brand.toLowerCase().includes(search);
+                const searchMatch = !search || kit.name.toLowerCase().includes(search) || kit.brand.toLowerCase().includes(search) || kit.category.toLowerCase().includes(search);
                 return brandMatch && searchMatch;
             });
 
             if (filtered.length === 0) {
-                document.getElementById("grid").innerHTML = '<div class="empty-message">No kits found. Try a different search or filter.</div>';
+                document.getElementById("grid").innerHTML = '<div class="empty-message">🏏 No kits found. Try a different search or filter.</div>';
                 return;
             }
 
             const html = filtered.map(kit => `
                 <div class="kit-card" onclick="showModal(${kit.id})">
-                    <div class="kit-image">${kit.icon}</div>
+                    <div class="kit-image">
+                        <img src="${kit.image}" alt="${kit.name}" onerror="this.style.display='none'">
+                    </div>
                     <div class="kit-content">
                         <div class="kit-brand">${kit.brand}</div>
                         <div class="kit-name">${kit.name}</div>
-                        <div class="kit-meta">${kit.material} • ${kit.weight}</div>
+                        <div class="kit-meta">${kit.category} • ${kit.level}</div>
                         <div class="kit-price">₹${kit.price.toLocaleString('en-IN')}</div>
                         <div class="kit-footer">
                             <button class="btn" onclick="event.stopPropagation(); toggleCompare(${kit.id})" ${compare.includes(kit.id) ? 'style="background: var(--accent); color: white"' : ''}>
@@ -683,7 +743,7 @@
                     <button class="compare-remove" onclick="toggleCompare(${kit.id})">×</button>
                     <h4>${kit.name}</h4>
                     <p><strong>₹${kit.price.toLocaleString('en-IN')}</strong></p>
-                    <p>${kit.brand}</p>
+                    <p>${kit.brand} • ${kit.category}</p>
                     <p>${kit.level} • ${kit.material}</p>
                 </div>
             `).join("");
@@ -693,13 +753,34 @@
 
         function showModal(id) {
             const kit = KITS.find(k => k.id === id);
-            document.getElementById("modalImage").textContent = kit.icon;
+            const modalImageEl = document.getElementById("modalImage");
+            
+            // Clear previous content
+            modalImageEl.innerHTML = '';
+            
+            // Create image element
+            const img = document.createElement('img');
+            img.src = kit.image;
+            img.alt = kit.name;
+            img.onerror = function() {
+                // Fallback to emoji if image fails
+                modalImageEl.innerHTML = '🏏';
+                modalImageEl.classList.add('emoji');
+            };
+            img.onload = function() {
+                modalImageEl.classList.remove('emoji');
+            };
+            modalImageEl.appendChild(img);
+
             document.getElementById("modalTitle").textContent = kit.name;
-            document.getElementById("modalMeta").textContent = `${kit.brand} • ${kit.level} • ${kit.material} • ${kit.weight}`;
+            document.getElementById("modalMeta").textContent = `${kit.brand} • ${kit.level} • ${kit.category} • ${kit.material}`;
             document.getElementById("modalPrice").textContent = `₹${kit.price.toLocaleString('en-IN')}`;
             document.getElementById("modalHighlights").innerHTML = kit.highlights.map(h => `<div class="highlight-item">✓ ${h}</div>`).join("");
             document.getElementById("modalBuy").href = kit.buyUrl;
-            document.getElementById("modalProduct").href = kit.productUrl;
+            document.getElementById("modalProduct").onclick = function(e) {
+                e.preventDefault();
+                window.open(kit.buyUrl, '_blank');
+            };
             document.getElementById("modalCompare").onclick = () => {
                 toggleCompare(id);
                 closeModal();
