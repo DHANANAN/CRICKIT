@@ -3,7 +3,6 @@ node_modules
 .gitignore
 README.md
 LICENSE
-src
 public
-vite.config.js
-package-lock.json
+.env*.local
+
