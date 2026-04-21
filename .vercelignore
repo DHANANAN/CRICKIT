@@ -1,0 +1,9 @@
+node_modules
+.git
+.gitignore
+README.md
+LICENSE
+src
+public
+vite.config.js
+package-lock.json
